@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Kablammo&display=swap");
+
+      body {
+        background-color: lightgoldenrodyellow;
+      }
+      * {
+        font-family: "Cherry Bomb One", cursive;
+      }
+      h1 {
+        /* font-family: "Kablammo", cursive; */
+        font-size: 60px;
+      }
+      table {
+        border-style: solid;
+        border-width: 2px;
+        border-color: aqua;
+        border-radius: 6px;
+        padding: 3px;
+      }
+
+      td {
+        background-color: aqua;
+        padding: 3px;
+        margin: 2px;
+        border-radius: 5px;
+      }
+      img {
+        border-radius: 6px;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .btn {
+        font-size: 24px;
+        background-color: white;
+        border-radius: 6px;
+        padding: 2px 5px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      #btnChange {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="heading" class="text-center">Hello, World!</h1>
+    <div class="text-center">
+      <button id="btnChange">change color</button>
+    </div>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <div>Lorem ipsum dolor sit amet.</div>
+    <p>ありがとうございます</p>
+    <div class="text-center">
+      <img src="images/photo.jpg" width="40%" />
+    </div>
+    <p>
+      <a href="https://www.google.com" target="_blank">Google</a>
+    </p>
+    <table>
+      <tr>
+        <td>C1</td>
+        <td>C2</td>
+      </tr>
+      <tr>
+        <td>C3</td>
+        <td>C4</td>
+      </tr>
+      <tr>
+        <td>C5</td>
+        <td>C6</td>
+      </tr>
+    </table>
+
+    <div class="text-center">
+      <button class="btn" id="getIdle">Stand</button>
+      <img id="catImg" src="images/Idle.png" alt="cat" width="300" />
+      <button class="btn" id="getSlide">Slide</button>
+    </div>
+    <div><br><br></div>
+    <script>
+      getIdle.onclick = () => {
+        catImg.src = "images/Idle.png";
+      };
+      getSlide.onclick = () => {
+        catImg.src = "images/Slide.png";
+      };
+
+      var stateChange = false;
+      btnChange.onclick = () => {
+        stateChange = !stateChange;
+        heading.style.color = stateChange ? "red" : "black";
+      };
+    </script>
+  </body>
+</html>
