@@ -178,6 +178,8 @@
           </div>
         </div>
         <script>
+          let touch =
+            "https://i.pinimg.com/originals/88/1e/4c/881e4cfe4d82aee0019b646e5b240a12.gif";
           let sayNo =
             "https://i.pinimg.com/originals/e9/18/aa/e918aacf39dd9bd00e75b2a31d98ed57.gif";
           let stand =
@@ -205,6 +207,19 @@
             if (catImg.src == sit) return;
             catImg.src = sit;
           };
+          // for touch
+          let cacheImg = catImg.src;
+          catImg.onmousedown = (e) => {
+            e.preventDefault();
+            cacheImg = catImg.src;
+            catImg.src = touch;
+          };
+          const getBackImg = (e) => {
+            e.preventDefault();
+            catImg.src = cacheImg;
+          };
+          catImg.onmouseup = getBackImg;
+          catImg.onmouseleave = getBackImg;
         </script>
       </fieldset>
 
