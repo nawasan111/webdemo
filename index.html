@@ -48,6 +48,9 @@
         .cat-box {
           display: block;
         }
+        #catImg {
+          max-width: 100%;
+        }
       }
 
       h1 {
@@ -209,7 +212,7 @@
           };
           // for touch
           let cacheImg = catImg.src;
-          catImg.onmousedown = (e) => {
+          const getTouchCat = (e) => {
             e.preventDefault();
             cacheImg = catImg.src;
             catImg.src = touch;
@@ -218,6 +221,10 @@
             e.preventDefault();
             catImg.src = cacheImg;
           };
+          catImg.ontouchstart = getTouchCat;
+          catImg.ontouchcancel = getBackImg;
+          catImg.ontouchend = getBackImg;
+          catImg.onmousedown = getTouchCat;
           catImg.onmouseup = getBackImg;
           catImg.onmouseleave = getBackImg;
         </script>
