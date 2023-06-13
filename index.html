@@ -20,6 +20,13 @@
       nav a {
         margin: 0 5px;
       }
+
+      .cat-box {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+      }
+
       @media only screen and (max-width: 600px) {
         .upper {
           width: 100%;
@@ -28,7 +35,11 @@
         #no5 {
           text-align: center;
         }
+        .cat-box {
+          display: block;
+        }
       }
+      
       h1 {
         /* font-family: "Kablammo", cursive; */
         font-size: 60px;
@@ -139,15 +150,21 @@
 
     <fieldset id="no3">
       <legend>No.3</legend>
-      <div class="text-center">
-        <button class="btn" id="getIdle">Stand</button>
-        <img
-          id="catImg"
-          src="https://i.pinimg.com/originals/c3/e6/9e/c3e69eec14167045f40755b2e53708ec.gif"
-          alt="cat"
-          height="300"
-        />
-        <button class="btn" id="getSlide">Sit</button>
+      <div class="text-center cat-box">
+        <div>
+          <button class="btn" id="getIdle">Stand</button>
+        </div>
+        <div>
+          <img
+            id="catImg"
+            src="https://i.pinimg.com/originals/c3/e6/9e/c3e69eec14167045f40755b2e53708ec.gif"
+            alt="cat"
+            height="300"
+          />
+        </div>
+        <div>
+          <button class="btn" id="getSlide">Sit</button>
+        </div>
       </div>
       <script>
         let sayNo =
@@ -169,7 +186,7 @@
           }
         };
         getSlide.onclick = () => {
-          if (catImg.src == sit) return
+          if (catImg.src == sit) return;
           catImg.src = sit;
         };
       </script>
