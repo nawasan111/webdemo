@@ -39,7 +39,7 @@
           display: block;
         }
       }
-      
+
       h1 {
         /* font-family: "Kablammo", cursive; */
         font-size: 60px;
@@ -170,16 +170,21 @@
         let sayNo =
           "https://i.pinimg.com/originals/e9/18/aa/e918aacf39dd9bd00e75b2a31d98ed57.gif";
         let stand =
+          "https://i.pinimg.com/originals/a6/75/84/a6758435cd49bd28ef23b4fc4f185d48.gif";
+        let standAngry =
           "https://i.pinimg.com/originals/1e/37/2d/1e372d565b7984c06aaf9d6b0c3a6e04.gif";
         let sit =
           "https://i.pinimg.com/originals/c3/e6/9e/c3e69eec14167045f40755b2e53708ec.gif";
+        let sayNoCount = 0;
         const getRand = () => Math.floor(Math.random() * 2);
         getIdle.onclick = () => {
           let imgCache = catImg.src;
           if (catImg.src == stand) return;
           let rand = getRand();
-          catImg.src = rand === 1 ? stand : sayNo;
+          catImg.src =
+            rand === 1 ? (sayNoCount > 2 ? standAngry : stand) : sayNo;
           if (rand === 0) {
+            sayNoCount++;
             setTimeout(() => {
               catImg.src = imgCache;
             }, 1000);
