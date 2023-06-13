@@ -13,9 +13,15 @@
       body {
         scroll-behavior: smooth;
         background-color: lightgoldenrodyellow;
+        text-align: center;
       }
       * {
         font-family: "Cherry Bomb One", cursive;
+      }
+      main {
+        display: inline-block;
+        max-width: 800px;
+        text-align: left;
       }
       nav a {
         margin: 0 5px;
@@ -104,224 +110,226 @@
     </style>
   </head>
   <body>
-    <header class="upper">
-      <nav>
-        <a href="#no1" title="change color text">No.1</a>
-        <a href="#no2" title="show date & time">No.2</a>
-        <a href="#no3" title="about cat">No.3</a>
-        <a href="#no4" title="show & hide table">No.4</a>
-        <a href="#no5" title="input number & math">No.5</a>
-      </nav>
-    </header>
-    <fieldset id="no1">
-      <legend>No.1</legend>
-      <h1 id="heading" class="text-center">Hello, World!</h1>
-      <div class="text-center">
-        <button class="btn" id="btnChange">change color</button>
-      </div>
-      <script>
-        var stateChange = false;
-        btnChange.onclick = () => {
-          stateChange = !stateChange;
-          heading.style.color = stateChange ? "red" : "black";
-        };
-      </script>
-    </fieldset>
+    <main>
+      <header class="upper">
+        <nav>
+          <a href="#no1" title="change color text">No.1</a>
+          <a href="#no2" title="show date & time">No.2</a>
+          <a href="#no3" title="about cat">No.3</a>
+          <a href="#no4" title="show & hide table">No.4</a>
+          <a href="#no5" title="input number & math">No.5</a>
+        </nav>
+      </header>
+      <fieldset id="no1">
+        <legend>No.1</legend>
+        <h1 id="heading" class="text-center">Hello, World!</h1>
+        <div class="text-center">
+          <button class="btn" id="btnChange">change color</button>
+        </div>
+        <script>
+          var stateChange = false;
+          btnChange.onclick = () => {
+            stateChange = !stateChange;
+            heading.style.color = stateChange ? "red" : "black";
+          };
+        </script>
+      </fieldset>
 
-    <fieldset id="no2">
-      <legend>No.2</legend>
-      <div id="showDate"></div>
-      <script>
-        // for No.2 show date and time
-        const getShowDate = () => {
-          const date = new Date();
-          const thaiDate = date.toLocaleDateString("th-TH", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            second: "numeric",
-          });
-          showDate.innerText = thaiDate;
-          setTimeout(() => {
-            getShowDate();
-          }, 1000);
-        };
-        getShowDate();
-      </script>
-    </fieldset>
-
-    <fieldset id="no3">
-      <legend>No.3</legend>
-      <div class="text-center cat-box">
-        <div>
-          <button class="btn" id="getIdle">Stand</button>
-        </div>
-        <div>
-          <img
-            id="catImg"
-            src="https://i.pinimg.com/originals/c3/e6/9e/c3e69eec14167045f40755b2e53708ec.gif"
-            alt="cat"
-            height="300"
-          />
-        </div>
-        <div>
-          <button class="btn" id="getSlide">Sit</button>
-        </div>
-      </div>
-      <script>
-        let sayNo =
-          "https://i.pinimg.com/originals/e9/18/aa/e918aacf39dd9bd00e75b2a31d98ed57.gif";
-        let stand =
-          "https://i.pinimg.com/originals/a6/75/84/a6758435cd49bd28ef23b4fc4f185d48.gif";
-        let standAngry =
-          "https://i.pinimg.com/originals/1e/37/2d/1e372d565b7984c06aaf9d6b0c3a6e04.gif";
-        let sit =
-          "https://i.pinimg.com/originals/c3/e6/9e/c3e69eec14167045f40755b2e53708ec.gif";
-        let sayNoCount = 0;
-        const getRand = () => Math.floor(Math.random() * 2);
-        getIdle.onclick = () => {
-          let imgCache = catImg.src;
-          if (catImg.src == stand) return;
-          let rand = getRand();
-          catImg.src =
-            rand === 1 ? (sayNoCount > 2 ? standAngry : stand) : sayNo;
-          if (rand === 0) {
-            sayNoCount++;
+      <fieldset id="no2">
+        <legend>No.2</legend>
+        <div id="showDate"></div>
+        <script>
+          // for No.2 show date and time
+          const getShowDate = () => {
+            const date = new Date();
+            const thaiDate = date.toLocaleDateString("th-TH", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              second: "numeric",
+            });
+            showDate.innerText = thaiDate;
             setTimeout(() => {
-              catImg.src = imgCache;
+              getShowDate();
             }, 1000);
-          }
-        };
-        getSlide.onclick = () => {
-          if (catImg.src == sit) return;
-          catImg.src = sit;
-        };
-      </script>
-    </fieldset>
+          };
+          getShowDate();
+        </script>
+      </fieldset>
 
-    <fieldset id="no4" class="text-center">
-      <legend>No.4</legend>
-      <button id="showTable">show table</button>
-      <button id="hideTable">hide table</button>
-      <div id="tableBox">
-        <div>ตารางสินค้า</div>
-        <table align="center">
-          <thead>
-            <th>รายการที่ 1</th>
-            <th>รายการที่ 2</th>
-            <th>รายการที่ 3</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>8</td>
-              <td>16</td>
-              <td>32</td>
-            </tr>
-            <tr>
-              <td>64</td>
-              <td>128</td>
-              <td>256</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <script>
-        showTable.onclick = () => {
-          tableBox.style.display = "block";
-        };
-        hideTable.onclick = () => {
-          tableBox.style.display = "none";
-        };
-      </script>
-    </fieldset>
-
-    <fieldset id="no5">
-      <style>
-        label {
-          display: block;
-        }
-        .btn-box {
-          padding: 3px;
-        }
-      </style>
-      <legend>No.5</legend>
-      <div>
-        <form id="formMath">
-          <label for="Number1">Number #1</label>
-          <input type="number" id="number1" required />
-          <label for="Number2">Number #2</label>
-          <input type="number" id="number2" required />
-          <label for="Number3">Number #3</label>
-          <input type="number" id="number3" required />
-          <div class="btn-box">
-            <button id="submitBtn" type="submit">submit</button>
-            <button id="autoInput">auto input</button>
+      <fieldset id="no3">
+        <legend>No.3</legend>
+        <div class="text-center cat-box">
+          <div>
+            <button class="btn" id="getIdle">Stand</button>
           </div>
-        </form>
-        <div id="showResult"></div>
-      </div>
-      <script>
-        let isResultShow = false;
-        let numberArray = [];
-        formMath.onsubmit = (e) => {
-          e.preventDefault();
-          isResultShow = true;
-          getUpdateResult();
-        };
+          <div>
+            <img
+              id="catImg"
+              src="https://i.pinimg.com/originals/c3/e6/9e/c3e69eec14167045f40755b2e53708ec.gif"
+              alt="cat"
+              height="300"
+            />
+          </div>
+          <div>
+            <button class="btn" id="getSlide">Sit</button>
+          </div>
+        </div>
+        <script>
+          let sayNo =
+            "https://i.pinimg.com/originals/e9/18/aa/e918aacf39dd9bd00e75b2a31d98ed57.gif";
+          let stand =
+            "https://i.pinimg.com/originals/a6/75/84/a6758435cd49bd28ef23b4fc4f185d48.gif";
+          let standAngry =
+            "https://i.pinimg.com/originals/1e/37/2d/1e372d565b7984c06aaf9d6b0c3a6e04.gif";
+          let sit =
+            "https://i.pinimg.com/originals/c3/e6/9e/c3e69eec14167045f40755b2e53708ec.gif";
+          let sayNoCount = 0;
+          const getRand = () => Math.floor(Math.random() * 2);
+          getIdle.onclick = () => {
+            let imgCache = catImg.src;
+            if (catImg.src == stand) return;
+            let rand = getRand();
+            catImg.src =
+              rand === 1 ? (sayNoCount > 2 ? standAngry : stand) : sayNo;
+            if (rand === 0) {
+              sayNoCount++;
+              setTimeout(() => {
+                catImg.src = imgCache;
+              }, 1000);
+            }
+          };
+          getSlide.onclick = () => {
+            if (catImg.src == sit) return;
+            catImg.src = sit;
+          };
+        </script>
+      </fieldset>
 
-        autoInput.onclick = () => {
-          number1.value = Math.floor(Math.random() * 100);
-          number2.value = Math.floor(Math.random() * 100);
-          number3.value = Math.floor(Math.random() * 100);
-        };
+      <fieldset id="no4" class="text-center">
+        <legend>No.4</legend>
+        <button id="showTable">show table</button>
+        <button id="hideTable">hide table</button>
+        <div id="tableBox">
+          <div>ตารางสินค้า</div>
+          <table align="center">
+            <thead>
+              <th>รายการที่ 1</th>
+              <th>รายการที่ 2</th>
+              <th>รายการที่ 3</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8</td>
+                <td>16</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td>64</td>
+                <td>128</td>
+                <td>256</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <script>
+          showTable.onclick = () => {
+            tableBox.style.display = "block";
+          };
+          hideTable.onclick = () => {
+            tableBox.style.display = "none";
+          };
+        </script>
+      </fieldset>
 
-        const getUpdateResult = () => {
-          numberArray = [
-            Number(number1.value),
-            Number(number2.value),
-            Number(number3.value),
-          ];
-          getShowResult(
-            (
-              numberArray.reduce((a, b) => a + b, 0) / numberArray.length
-            ).toFixed(2),
-            Math.max(...numberArray),
-            Math.min(...numberArray)
-          );
-        };
-        const getShowResult = (mean, max, min) => {
-          showResult.innerHTML = `
+      <fieldset id="no5">
+        <style>
+          label {
+            display: block;
+          }
+          .btn-box {
+            padding: 3px;
+          }
+        </style>
+        <legend>No.5</legend>
+        <div>
+          <form id="formMath">
+            <label for="Number1">Number #1</label>
+            <input type="number" id="number1" required />
+            <label for="Number2">Number #2</label>
+            <input type="number" id="number2" required />
+            <label for="Number3">Number #3</label>
+            <input type="number" id="number3" required />
+            <div class="btn-box">
+              <button id="submitBtn" type="submit">submit</button>
+              <button id="autoInput">auto input</button>
+            </div>
+          </form>
+          <div id="showResult"></div>
+        </div>
+        <script>
+          let isResultShow = false;
+          let numberArray = [];
+          formMath.onsubmit = (e) => {
+            e.preventDefault();
+            isResultShow = true;
+            getUpdateResult();
+          };
+
+          autoInput.onclick = () => {
+            number1.value = Math.floor(Math.random() * 100);
+            number2.value = Math.floor(Math.random() * 100);
+            number3.value = Math.floor(Math.random() * 100);
+          };
+
+          const getUpdateResult = () => {
+            numberArray = [
+              Number(number1.value),
+              Number(number2.value),
+              Number(number3.value),
+            ];
+            getShowResult(
+              (
+                numberArray.reduce((a, b) => a + b, 0) / numberArray.length
+              ).toFixed(2),
+              Math.max(...numberArray),
+              Math.min(...numberArray)
+            );
+          };
+          const getShowResult = (mean, max, min) => {
+            showResult.innerHTML = `
           <div>mean = ${mean}</div>
           <div>max = ${max}</div>
           <div>min = ${min}</div>
           `;
-        };
-        number1.onkeyup = () => {
-          if (!isResultShow) return;
-          getUpdateResult();
-        };
-        number2.onkeyup = () => {
-          if (!isResultShow) return;
-          getUpdateResult();
-        };
-        number3.onkeyup = () => {
-          if (!isResultShow) return;
-          getUpdateResult();
-        };
-      </script>
-    </fieldset>
+          };
+          number1.onkeyup = () => {
+            if (!isResultShow) return;
+            getUpdateResult();
+          };
+          number2.onkeyup = () => {
+            if (!isResultShow) return;
+            getUpdateResult();
+          };
+          number3.onkeyup = () => {
+            if (!isResultShow) return;
+            getUpdateResult();
+          };
+        </script>
+      </fieldset>
 
-    <p>Lorem ipsum dolor sit amet.</p>
-    <div>Lorem ipsum dolor sit amet.</div>
-    <p>ありがとうございます</p>
-    <div class="text-center">
-      <img src="images/photo.jpg" width="40%" />
-    </div>
-    <p>
-      <a href="https://www.google.com" target="_blank">Google</a>
-    </p>
-    <div style="height: 300px"></div>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <div>Lorem ipsum dolor sit amet.</div>
+      <p>ありがとうございます</p>
+      <div class="text-center">
+        <img src="images/photo.jpg" width="40%" />
+      </div>
+      <p>
+        <a href="https://www.google.com" target="_blank">Google</a>
+      </p>
+      <div style="height: 300px"></div>
+    </main>
   </body>
 </html>
