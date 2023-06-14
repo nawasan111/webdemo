@@ -195,7 +195,7 @@
           const getRand = () => Math.floor(Math.random() * 2);
           getIdle.onclick = () => {
             let imgCache = catImg.src;
-            if (catImg.src == stand) return;
+            if (catImg.src === stand || catImg.src === standAngry) return;
             let rand = getRand();
             catImg.src =
               rand === 1 ? (sayNoCount > 2 ? standAngry : stand) : sayNo;
@@ -220,6 +220,10 @@
           const getBackImg = (e) => {
             e.preventDefault();
             catImg.src = cacheImg;
+          };
+          // const catImg = document.getElementById("catImg");
+          catImg.onmouseover = () => {
+            cacheImg = catImg.src;
           };
           catImg.ontouchstart = getTouchCat;
           catImg.ontouchcancel = getBackImg;
